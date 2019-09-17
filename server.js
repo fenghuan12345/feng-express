@@ -8,7 +8,10 @@ app.use(express.urlencoded({extended:true}));
 // 中间键调用实现给req加上一个cookie属性，获取cookie；
 app.use(cookieParser());
 
-
+//中间键调用静态资源托管设置
+//相当于把public1文件夹设置成localhost：3000
+//并且当前文件夹下的html文件可以读取link中的样式文件；
+app.use(express.static("public1"));
 
 // app.get("/",(req,res)=>{
 //     // res.write("hello express");
@@ -47,11 +50,10 @@ app.use(cookieParser());
 // })
 
 // localhost:3000/world/张三/18
-app.get("/world/:name/:age",(req,res) =>{
-    // console.log(req.params);{ name: '张三', age: '18' }
-    res.send("hello world");
-});
-
+// app.get("/world/:name/:age",(req,res) =>{
+//     // console.log(req.params);{ name: '张三', age: '18' }
+//     res.send("hello world");
+// });
 
 app.listen(3000);
 
